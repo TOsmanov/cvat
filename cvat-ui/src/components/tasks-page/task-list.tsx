@@ -58,7 +58,9 @@ export default class TaskListComponent extends React.PureComponent<ContentListPr
         if (!showAll && hiddenTasksIndexes.length) {
             message.info(
                 <>
-                    <Text>There are some hidden tasks which has not been created yet. </Text>
+                    <Text>
+                        Some tasks has not been showed because they do not have any data.
+                    </Text>
                     <Button
                         type='link'
                         onClick={(): void => {
