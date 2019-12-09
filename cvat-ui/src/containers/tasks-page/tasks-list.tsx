@@ -47,10 +47,14 @@ function TasksListContainer(props: TasksListContainerProps): JSX.Element {
         onSwitchPage,
     } = props;
 
+    const hiddenTasks = tasks.current
+        .filter((task: any): boolean => task.instance.jobs.length === 0);
+
     return (
         <TasksListComponent
             onSwitchPage={onSwitchPage}
             currentTasksIndexes={tasks.current.map((task): number => task.instance.id)}
+            hiddenTasksIndexes={hiddenTasks.map((task): number => task.instance.id)}
             currentPage={tasks.gettingQuery.page}
             numberOfTasks={tasks.count}
         />

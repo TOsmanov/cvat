@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
+    Task,
     TasksQuery,
     CombinedState,
     ActiveInference,
@@ -25,12 +26,13 @@ interface DispatchToProps {
 }
 
 interface OwnProps {
-    idx: number;
     taskID: number;
+    invisible: boolean;
 }
 
 function mapStateToProps(state: CombinedState, own: OwnProps): StateToProps {
-    const task = state.tasks.current[own.idx];
+    const task = state.tasks.current
+        .filter((_task: Task) => _task.instance.id === own.taskID)[0];
     const { deletes } = state.tasks.activities;
     const id = own.taskID;
 

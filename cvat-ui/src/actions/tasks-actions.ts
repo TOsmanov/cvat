@@ -90,8 +90,7 @@ ThunkAction<Promise<void>, {}, {}, AnyAction> {
             return;
         }
 
-        const array = Array.from(result)
-            .filter((task: any) => task.jobs.length > 0);
+        const array = Array.from(result);
         const previews = [];
         const promises = array
             .map((task): string => (task as any).frames.preview());
